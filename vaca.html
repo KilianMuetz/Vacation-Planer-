@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Urlaubsplaner</title>
-    <link rel="stylesheet" href="vacastyle.css">
+    <link rel="stylesheet" href="vacastylesfinal.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/ajaxfunctions.js"></script>
 </head>
 <body>
     <header>
         <div class="dropdown_VW">
         <h1>Urlaubsplaner</h1>
-        <button class="admin-button" id="Verwaltungsbutton">User Verwaltung</button>
+        <button class="admin-button" id="Verwaltungsbutton">User anzeigen</button>
             <div class="dropdown-content_VW">
-                <table>
+                <table id="PersonDataTable">
                     <tr>
                         <th>User</th>
                         <th>User ID</th>
@@ -30,12 +34,29 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button class ="dropdown-btn">Benutzer anlegen</button>
-                            <button class ="dropdown-btn">Benutzer ändern</button>
-                            <button class ="dropdown-btn">Benutzer löschen</button>
                         </td>
                     </tr>
                 </table>
+            </div>
+             <div class="dropdown_b">
+            <button class="admin-button" id="Userbutton">User verwalten</button>
+                <div class="dropdown-content_VW">
+                    <form id="personen_pflege_tabelle">
+                        <table>
+                    <tr>
+                        <td><label for="pid">BenutzerID:</label></td>
+                        <td><input type="text" id="pid" name="pid" placeholder="  "></td>
+                     </tr>
+                    <tr>
+                        <td><label for="pname">Benutzername:</label></td>
+                        <td><input type="text" id="pname" name="pname" placeholder="  "></td>
+                            </tr>
+                </table>
+                    </form>
+                        <button class ="dropdown-btn" id="Benutzer_neu">Benutzer anlegen</button>
+                        <button class ="dropdown-btn" id="Benutzer_upd">Benutzer ändern</button>
+                        <button class ="dropdown-btn" id="Benutzer_del">Benutzer löschen</button>
+                </div>
             </div>
             <div class="dropdown">
             <button class="admin-button" id="Loginbutton">Login</button>
@@ -43,8 +64,9 @@
                     <form>
                         <label for="Benutzername">Benutzername:</label>
                         <input type="text" id="Benutzername" name="Benutzername" placeholder="  ">
+                        <br>
                         <label for="Passwort">Passwort:</label>
-                        <input type="Passwort" id="Passwort" name="Passwort" placeholder="  ">
+                        <input type="password" id="Passwort" name="Passwort" placeholder="  ">
                         <input type="submit" value="Login">
                     </form>
                 </div>
@@ -54,26 +76,27 @@
     <main>
         <div class="table-container-1">
             <h2>Urlaubsvorschläge</h2>
-            <table class="slider-table">
-                <thead>
-                    <tr>
-                        <th>Urlaubsziel ID</th>
-                        <th>Urlaubsort</th>
-                        <th>Urlaubsland</th>
-                        <th>Kurzbeschreibung</th>
-                        <th>Startdatum</th>
-                        <th>Enddatum</th>
-                        <th>Distanz in KM</th>
-                        <th>Transportmittel</th>
-                        <th>Kostenschätzung in €</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="white-bg" >ID</td>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
+            <form id="NeuesUrlaubzieltabelle">
+                <table class="slider-table">
+                    <thead>
+                        <tr>
+                            <th>Urlaubsziel ID</th>
+                            <th>Urlaubsort</th>
+                            <th>Urlaubsland</th>
+                            <th>Kurzbeschreibung</th>
+                            <th>Startdatum</th>
+                            <th>Enddatum</th>
+                            <th>Distanz in KM</th>
+                            <th>Transportmittel</th>
+                            <th>Kostenschätzung in EUR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="uzid"  id="uzid"></td>
+                            <td><input type="text" name="UrlaubszielNeu" ></td>
+                            <td>
+                            <select id= "landNeu" name="land" >
                                 <option value="" selected disabled hidden></option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Aland Islands">Aland Islands</option>
@@ -328,40 +351,40 @@
                                 <option value="Zambia">Sambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
                             </select>
-                        </td>
-                        <td><input type="text"></td>
-                        <td><input type="date"></td>
-                        <td><input type="date"></td>
-                        <td><input type="number" min="0" value="0"></td>
-                        <td>
-                            <select>
-                                <option value="" selected disabled hidden></option>
-                                <option value="Auto">Auto</option>
-                                <option value="Motorrad">Motorrad</option>
-                                <option value="Wohnmobil">Wohnmobil</option>
-                                <option value="Camper">Camper</option>
-                                <option value="Zug">Zug</option>
-                                <option value="Bus">Bus</option>
-                                <option value="Flugzeug">Flugzeug</option>
-                                <option value="cruise">Kreuzfahrtschiff</option>
-                                <option value="Fähre">Fähre</option>
-                                <option value="Fahrrad">Fahrrad</option>
-                                <option value="Hubschrauber">Hubschrauber</option>
-                                <option value="hot-air-balloon">Heißluftballon</option>
-                             </select>
-                        </td>
-                        <td><input type="number" min="0" value="0"></td>
-                        <td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class ="adder-btn">+ Neuer Urlaubsvorschlag</button>
-            <button class ="adder-btn">Urlaubsvorschlag ändern</button>
-            <button class ="adder-btn">Urlaubsvorschlag löschen</button>
+                            </td>
+                            <td><input type="text" name="Kurzbeschreibung" ></td>
+                            <td><input type="date" name="Startdatum"></td>
+                            <td><input type="date" name="Enddatum"></td>
+                            <td><input type="number" min="0" value="0" name="Distanz"></td>
+                            <td>
+                                <select name="Transportmittel" >
+                                    <option value="" selected disabled hidden></option>
+                                    <option value="Auto">Auto</option>
+                                    <option value="Motorrad">Motorrad</option>
+                                    <option value="Wohnmobil">Wohnmobil</option>
+                                    <option value="Camper">Camper</option>
+                                    <option value="Zug">Zug</option>
+                                    <option value="Bus">Bus</option>
+                                    <option value="Flugzeug">Flugzeug</option>
+                                    <option value="cruise">Kreuzfahrtschiff</option>
+                                    <option value="Fähre">Fähre</option>
+                                    <option value="Fahrrad">Fahrrad</option>
+                                    <option value="Hubschrauber">Hubschrauber</option>
+                                    <option value="Heißluftballon">Heißluftballon</option>
+                                </select>
+                            </td>
+                            <td><input type="number" min="0" value="0" name="Kosten"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+                    <button class ="dropdown-btn" id="newUZButton"> + Neuer Urlaubsvorschlag</button>
+                    <button class ="dropdown-btn" id="updateUZ">/ Urlaubsvorschlag ändern</button>
+                    <button class ="dropdown-btn"id="deleteUZ">/ Urlaubsvorschlag löschen</button>
         </div>
         <div class="table-container-show">
             <h2>Gesammelte Urlaubsvorschläge</h2>
-            <table class="slider-table">
+            <table id="uztable" class="slider-table">
                 <thead>
                     <tr>
                         <th>Urlaubsziel ID</th>
@@ -372,7 +395,7 @@
                         <th>Enddatum</th>
                         <th>Distanz in KM</th>
                         <th>Transportmittel</th>
-                        <th>Kostenschätzung in €</th>
+                        <th>Kostenschätzung in EUR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -391,26 +414,28 @@
             </table>
         </div>
         <div class="table-container-middle">
-            <table>
-                <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Urlaubsziel ID</th>
-                        <th>Priorität</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="white-bg" >ID</td>
-                        <td class="white-bg" >ID</td>
-                        <td><input type="number" min="0" max="10" value="0"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class ="BW-button">Bewertung abgeben</button>
+            <form id="vorschlag_anlegen">
+                <table >
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Urlaubsziel ID</th>
+                            <th>Priorität</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" name="vorschlag_pid" required="required" id="vorschlag_pid"></td>
+                            <td><input type="number" name="vorschlag_uzid" required="required"></td>
+                            <td><input type="number" min="0" max="10" value="0" name="vorschlag_prio"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <input class ="dropdown-btn" type="submit" value="Bewertung abgeben" id="vorschlag_abgeben">
+            </form>
         </div>
         <div class="table-container-2">
-            <table>
+            <table id="SortiertPrioTabelle">
                 <thead>
                     <tr>
                         <th>Urlaubsvorschlag</th>
