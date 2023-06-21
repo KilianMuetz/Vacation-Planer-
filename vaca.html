@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Urlaubsplaner</title>
-    <link rel="stylesheet" href="vacastylesfinal.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -11,10 +11,13 @@
 </head>
 <body>
     <header>
-        <div class="dropdown_VW">
-        <h1>Urlaubsplaner</h1>
-        <button class="admin-button" id="Verwaltungsbutton">User anzeigen</button>
-            <div class="dropdown-content_VW">
+      <div class="dropdown-container">
+         <div class = "dropdown" >
+            <h1>Urlaubsplaner</h1>
+         </div>
+         <div class="dropdown">
+            <button class="admin-button" id="Verwaltungsbutton">User anzeigen</button>
+            <div class="dropdown-content">
                 <table id="PersonDataTable">
                     <tr>
                         <th>User</th>
@@ -33,14 +36,14 @@
                         <td>000003</td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                        </td>
+                        <td colspan="2"</td>
                     </tr>
                 </table>
+              </div>
             </div>
-             <div class="dropdown_b">
+             <div class="dropdown">
             <button class="admin-button" id="Userbutton">User verwalten</button>
-                <div class="dropdown-content_VW">
+                <div class="dropdown-content">
                     <form id="personen_pflege_tabelle">
                         <table>
                     <tr>
@@ -379,8 +382,8 @@
                 </table>
             </form>
                     <button class ="dropdown-btn" id="newUZButton"> + Neuer Urlaubsvorschlag</button>
-                    <button class ="dropdown-btn" id="updateUZ">/ Urlaubsvorschlag ändern</button>
-                    <button class ="dropdown-btn"id="deleteUZ">/ Urlaubsvorschlag löschen</button>
+                    <button class ="dropdown-btn" id="updateUZ"> Urlaubsvorschlag ändern</button>
+                    <button class ="dropdown-btn"id="deleteUZ"> Urlaubsvorschlag löschen</button>
         </div>
         <div class="table-container-show">
             <h2>Gesammelte Urlaubsvorschläge</h2>
